@@ -9,6 +9,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Camera from "./components/Camera";
+import Messages from "./components/Messages";
 
 
 function App() {
@@ -42,20 +43,24 @@ function App() {
     switch (section) {
       case "home":
         return (
-            posts.length?  () => <Posts posts={posts}/>:null
+          <> 
+            <Stories stories={stories}/>
+            <Posts posts={posts}/>
+          </>
+         
         );
       case "camera":
         return <Camera />;
       case "tv":
         return <h1>TVVVVV</h1>;
       case "messages":
-        return <h1>MESSAGGGGIIIIII</h1>;
+        return <Messages/>;
     }
   };
 
   return (
     <>
-      <TopBar />
+      <TopBar setSection={setSection}/>
       {onSectionRender()};
     </>
   )

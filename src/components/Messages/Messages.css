@@ -1,0 +1,16 @@
+.conversation {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.conversation img {
+        position: relative;
+        padding: 2px;
+      
+        width: 62px;
+        height: 62px;
+      
+        border-radius: 50%;
+        margin-bottom: 8px;
+}

@@ -1,20 +1,30 @@
 import "./TopBar.css";
 import { CameraIcon, IGTVIcon, MessangerIcon, LogoIcon } from "../../icons";
 
-const TopBar = () => {
+const TopBar = ({setSection}) => {
+
+    const onHandleSectionClick = (sectionSelectioned) => {
+        setSection(sectionSelectioned);
+    }
+
     return (
             <div className="TopBar">
-                <div className="TopBar_Camera">
+                <div className="TopBar_Camera" onClick={() => onHandleSectionClick('camera')}>
                     <CameraIcon />
                 </div>
 
-                <div className="TopBar_Logo">
+                <div className="TopBar_Logo" onClick={() => onHandleSectionClick('home')}>
                     <LogoIcon />
                 </div>
 
                 <div className="TopBar_Actions">
-                    <IGTVIcon />
-                    <MessangerIcon />
+                    <div onClick={() => onHandleSectionClick('tv')}>
+                        <IGTVIcon />
+                    </div>
+                    <div onClick={() => onHandleSectionClick('messages')}>
+                        <MessangerIcon />
+                    </div>
+                   
                 </div>
             </div>
     )
