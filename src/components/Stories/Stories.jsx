@@ -11,7 +11,8 @@ const Stories = ({ stories }) => {
                         <li className="Stories__Item" key={story.id}>
                             <Story story={story} />
                         </li>
-                    ))}
+                    ))
+                }
             </ul>
         </div>
     )

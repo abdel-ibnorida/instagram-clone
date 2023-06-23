@@ -23,7 +23,7 @@ const Post = ({ post }) => {
             </div>
             <div className="PostContent">
                 {post?.media?.map((media) => (
-                    <img key={media?.id} src={media?.src} />
+                    <img key={media?.id} src="https://picsum.photos/400/300" />
                 ))}
             </div>
         </article>
