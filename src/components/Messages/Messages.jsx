@@ -12,9 +12,14 @@ const Messages = () => {
             then((data) => setMessages(data.messageList));
     }, [])
 
+    const handelSingleConvInfo = (name) => {
+        setSection("conversation");
+        setChatName(name);
+    }
+
     const handleSection = () => {
         switch (section) {
-            case  "messages":
+            case "messages":
                 return (
                     <div className="messages">
                         <p className="name_section">Messagi</p>
@@ -24,7 +29,7 @@ const Messages = () => {
                                     <div className="conversation_avatar">
                                         <img src={conv.participants[1].avatar_url}></img>
                                     </div>
-                                    <div className="conversation_info_container" onClick={()=> handelSingleConvInfo(conv.participants[1].username)}>
+                                    <div className="conversation_info_container" onClick={() => handelSingleConvInfo(conv.participants[1].username)}>
                                         <div className="conversation_recipient">{conv.participants[1].username}</div>
                                         <div className="conversation_text_container">
                                             <p className="conversation_text">{conv.messages[conv.messages.length - 1].content}</p>
@@ -40,10 +45,25 @@ const Messages = () => {
                         }
                     </div>
                 );
-            case  "conversation":
-                return(
+            case "conversation":
+                return (
                     <>
-                    <button onClick={()=>setSection("messages")}> X </button>
+                        <button onClick={() => setSection("messages")}> X </button>
+                        <div>
+                            <div className="modal_conversation_name">
+                                {chatName}
+                            </div>
+                            <div  className="modal_conversation_container">
+                                {
+                                    messages.filter((conv) => conv.participants[1].username === chatName)[0].messages.
+                                    map((mess) => (
+                                        <p className={mess.sender === chatName ? "modal_message_recepient" : "modal_message_user"}>
+                                            { mess.content}
+                                        </p>
+                                    ))
+                                }
+                            </div>
+                        </div>
                     </>
                 );
 
@@ -51,11 +71,9 @@ const Messages = () => {
 
     }
 
-    const handelSingleConvInfo = (name) => {
-        setSection("conversation");
-        setChatName(name);
-        console.log(name);
-    }
+
+
+
 
     return (
         <>

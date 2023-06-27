@@ -47,3 +47,10 @@
     font-size: xx-large;
     font-weight: bolder;
 }
+.modal_message_user {
+    display: flex;
+    justify-content: flex-end;
+}
+.modal_message_recepient {
+
+}
